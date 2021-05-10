@@ -63,3 +63,44 @@ $ git reset –hard HEAD~3  # 回退上上上一个版本
 $ git reset –hard bae128  # 回退到某个版本回退点之前的所有信息。 
 $ git reset --hard origin/master    # 将本地的状态回退到和远程的一样
 ```
+
+## rm
+git rm ：将文件从暂存区和工作区中删除
+```
+git rm -f file
+```
+删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 -f，目录递归 -r，如果只删除暂存区，不删除工作区则--cached
+```
+git rm --cached file
+```   
+
+## 分支管理
+- git branch：列出现有分支
+- git branch newBranch：创建新的分支，分支名为newBranch，注：创建分支时，不用新增目录
+- git checkout targetBranch：切换到目标分支，增加-b则创建新分支并立即切换到该分支下
+- git merge secondBranch：secondBranch分支合并到master
+- git branch -d secondBranch：合并后，方可将分支删除
+- 冲突处理：当两个分支存在冲突时，merger会Automatic merge failed，并列出冲突文件，冲突文件中会展示冲突内容和差异，需要人工完成冲突处理，然后重新add，完成merge，如下：
+```
+$ git merge newBranch
+Auto-merging git/test/text
+CONFLICT (content): Merge conflict in git/test/text
+Automatic merge failed; fix conflicts and then commit the result.
+
+手工处理冲突 
+
+lenovo@LAPTOP-4CLVVOF3 MINGW64 /e/IdeaProjects/tool-chain/git/test (master|MERGING)
+$ git add text
+
+lenovo@LAPTOP-4CLVVOF3 MINGW64 /e/IdeaProjects/tool-chain/git/test (master|MERGING)
+$ git commit -m 'deal confict'
+[master 82380e5] deal confict
+
+lenovo@LAPTOP-4CLVVOF3 MINGW64 /e/IdeaProjects/tool-chain/git/test (master)
+$ git merge newBranch
+Already up to date.
+
+lenovo@LAPTOP-4CLVVOF3 MINGW64 /e/IdeaProjects/tool-chain/git/test (master)
+$ git branch -d newBranch
+Deleted branch newBranch (was 9775552).
+```
