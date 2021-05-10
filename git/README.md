@@ -104,3 +104,20 @@ lenovo@LAPTOP-4CLVVOF3 MINGW64 /e/IdeaProjects/tool-chain/git/test (master)
 $ git branch -d newBranch
 Deleted branch newBranch (was 9775552).
 ```
+
+## 打标签
+- git tag：给版本打tag
+```
+弹出窗口写注释
+git tag -a v0.1
+直接写注释
+git tag v0.1 -m 'xxx tag'
+```
+- git tag：查看有哪些tag
+- git tag -d v0.1：删除tag
+
+## 查看历史
+- git log   
+```
+git log --author=liuchenglin --oneline -5 --oneline --before={1.days.ago} --after={2020-12-31}
+```
