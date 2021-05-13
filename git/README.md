@@ -126,3 +126,26 @@ git log --author=liuchenglin --oneline -5 --oneline --before={1.days.ago} --afte
 两个命令用来提取远程仓库的更新
 - git fetch [alias]：从远程仓库下载新分支与数据
 - git merge [alias]/[branch]：从远端仓库提取数据并尝试合并到当前分支
+- 冲突处理：如果有冲突，log会列出冲突文件，如下：
+```
+$ git merge origin/master
+Auto-merging test
+CONFLICT (content): Merge conflict in test
+Automatic merge failed; fix conflicts and then commit the result.
+```
+同时冲突的文件也被merge为如下内容：
+```
+hello git
+<<<<<<< HEAD
+local update
+=======
+update...
+>>>>>>> origin/master
+```
+“<<<<<<< HEAD”   
+本地部分   
+“=======”   
+远程部分   
+“>>>>>>> origin/master”   
+人工进行merge合并处理   
+然后重新add，则完成merge合并
