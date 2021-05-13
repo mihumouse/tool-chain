@@ -121,3 +121,8 @@ git tag v0.1 -m 'xxx tag'
 ```
 git log --author=liuchenglin --oneline -5 --oneline --before={1.days.ago} --after={2020-12-31}
 ```
+
+## 提取远程仓库
+两个命令用来提取远程仓库的更新
+- git fetch [alias]：从远程仓库下载新分支与数据
+- git merge [alias]/[branch]：从远端仓库提取数据并尝试合并到当前分支
