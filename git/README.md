@@ -149,3 +149,6 @@ update...
 “>>>>>>> origin/master”   
 人工进行merge合并处理   
 然后重新add，则完成merge合并
+
+## 推送到远程仓库
+- git push [alias] [branch]：
