@@ -151,4 +151,4 @@ update...
 然后重新add，则完成merge合并
 
 ## 推送到远程仓库
-- git push [alias] [branch]：
+- git push [alias] [branch]： [branch] 分支推送成为 [alias] 远程仓库上的 [branch] 分支
