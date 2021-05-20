@@ -46,5 +46,76 @@ A  test.md
 git add test.md
 ```
 
+## 查看未提交至缓存的内容
+git diff，可查询尚未暂存的改动，如已经git add . 则diff后无任何返回
 
+## 提交暂存信息
+- git commit：提交到本地仓库
+```
+git commit -m "commit test"
+```
 
+## 移除文件
+git rm ：将文件从暂存区和工作区中删除
+```
+git rm -f file
+```
+删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 -f，目录递归 -r，如果只删除暂存区，不删除工作区则--cached
+
+## 移动文件、修改文件名
+git vm 进行文件移动和修改
+```
+git mv test/text test/text.md
+```
+
+## 撤销提交
+### git commit --amend   
+当commit后发现提交描述信息错了，亦或有文件遗漏，则通过--amend进行调整，详细又分两种情形：
+- 如果commit后直接执行git commit --amend则可修改提交的描述信息
+- 如果commit后，又进行了部分add等操作，再git commit --amend，则将后续的操作与上次提交合并为一次提交
+```
+echo 'test1' >> test1.md
+git add test1.md
+git commit -m 'first commit'
+echo 'test1' >> test2.md
+git add test2.md
+git commit --amend -m 'test amend commit'
+```
+如上test1.md与test2.md合并在一次commit
+
+### git reset HEAD <file>
+如果想取消已commit到暂存区的文件，将文件恢复成修改未暂存状态，且工作区已修改内容无变化
+```
+git reset HEAD test2.md
+```
+
+### git checkout -- <file>
+如果想取消工作区已经修改单未提交到暂存区的文件，且不再需要已修改的版本
+```
+git checkout -- test2.md
+```
+注：执行后工作区修改直接覆盖
+
+## 远程仓库
+### 查看已配置的远程仓库
+git remote：查看已经配置的远程仓库，如果已经克隆一个仓库，则会看到origin（git默认命名为origin）
+
+### 添加、推送到远程仓库
+git remote add <shortName> <url>：将本地仓库代码添加到远程仓库
+git push -u <remoteName> <branch>：push到远程（注：如果是clone下来到本地库的，后面的参数git会自动设置为克隆源的名称）
+
+### 几种拉取方式
+- git clone <url>：自动添加远程仓库，并默认简称为origin
+- git fetch <remoteName>：抓取上一次抓取后的新增的所有内容，拉取到本地仓库，但不会自动合并，需要手动合并   
+- git pull <url> <remoteBranch>：<localBranch>：pull相当于fetch + merge
+
+## 打标签
+- git tag：给版本打tag
+```
+弹出窗口写注释
+git tag -a v0.1
+直接写注释
+git tag v0.1 -m 'xxx tag'
+```
+- git tag：查看有哪些tag
+- git tag -d v0.1：删除tag
