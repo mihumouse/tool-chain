@@ -29,7 +29,7 @@ git clone https://github.com/mihumouse/tool-chain.git path
 git status，可查看是否有文件在以上的文件状态下，以便于开发者了解状态和处理   
 -s参数能够简化status的冗长描述
 ```
-$ git status -s
+$ git status -s     
  M README.md
 AM notes/01Start.md
 AM notes/02Basic.md
