@@ -47,7 +47,9 @@ git add test.md
 ```
 
 ## 查看未提交至缓存的内容
-git diff，可查询尚未暂存的改动，如已经git add . 则diff后无任何返回
+git diff，可查询尚未暂存的改动，如已经git add . 则diff后无任何返回   
+git diff --staged，可查询已add文件的改动   
+如果diff过程出现乱码，需要修改环境变量：
 
 ## 提交暂存信息
 - git commit：提交到本地仓库
